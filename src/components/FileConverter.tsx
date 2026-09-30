@@ -135,8 +135,8 @@ export default function FileConverter() {
       await ffmpeg.exec(['-i', inputName, '-q:a', '0', '-map', 'a', outputName]);
       
       const fileData = await ffmpeg.readFile(outputName);
-      const data = new Uint8Array(fileData as ArrayBuffer);
-      const outputBlob = new Blob([data.buffer], { type: 'audio/mpeg' });
+      const data = fileData as any;
+      const outputBlob = new Blob([data], { type: 'audio/mpeg' });
 
       setFiles(prev => prev.map(f => 
         f.id === fileItem.id ? { ...f, status: 'done', progress: 100, outputBlob } : f

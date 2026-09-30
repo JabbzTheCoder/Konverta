@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  # The Next.js Runtime on Netlify automatically configures the publish directory
+  # but it's good practice to ensure it uses Next.js build.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Embedder-Policy = "require-corp"
